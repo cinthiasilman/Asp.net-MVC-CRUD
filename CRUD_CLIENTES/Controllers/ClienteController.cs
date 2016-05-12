@@ -31,7 +31,7 @@ namespace CRUD_CLIENTES.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (ModelState.IsValid) //estará válido se eu preenchi todos os campos
                 {
                     _repositorio = new ClienteRepositorio();
                     if (_repositorio.AdicionarCliente(clienteObj))

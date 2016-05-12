@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CRUD_CLIENTES.Models.Cliente>
+
+<h4>Todos os clientes</h4>
+<p>
+    @Html.ActionLink("Adicionar novo cliente", "IncluirCliente")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_CLIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDADE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ENDERECO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CIDADE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UF)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    @Html.HiddenFor(model => item.ID_CLIENTE)
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.NOME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDADE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ENDERECO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CIDADE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UF)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "EditarCliente", new { id = item.ID_CLIENTE }) |
+            @Html.ActionLink("Excluir", "ExcluirCliente", new { id = item.ID_CLIENTE }, new { onclick = "return confirm('Tem certeza que deseja excluir?');" }) 
+        </td>
+    </tr>
+}
+
+</table>
