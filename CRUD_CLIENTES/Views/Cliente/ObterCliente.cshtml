@@ -1,14 +1,13 @@
-﻿@model IEnumerable<CRUD_CLIENTES.Models.Cliente>
+﻿
+@model IEnumerable<CRUD_CLIENTES.Models.Cliente>
 
 <h4>Todos os clientes</h4>
 <p>
     @Html.ActionLink("Adicionar novo cliente", "IncluirCliente")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID_CLIENTE)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.NOME)
         </th>

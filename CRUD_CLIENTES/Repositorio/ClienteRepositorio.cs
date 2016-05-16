@@ -9,14 +9,14 @@ using System.Web;
 
 namespace CRUD_CLIENTES.Repositorio
 {
-    public class ClienteRepositorio
+    public class ClienteRepositorio //métodos de conexão
     {
         private SqlConnection _con;
 
         private void Connection()
         {
             string constr = ConfigurationManager.ConnectionStrings["conexao"].ToString();
-            _con = new SqlConnection(constr);
+            _con = new SqlConnection(constr); //instancia a conexão
         }
 
         //Adicionar um cliente
@@ -24,9 +24,9 @@ namespace CRUD_CLIENTES.Repositorio
         {
             Connection();
             int i;
-            using (SqlCommand command = new SqlCommand("IncluirCliente", _con))
+            using (SqlCommand command = new SqlCommand("IncluirCliente", _con)) //cria um command
             {
-                command.CommandType = CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure; //chama a procedure
                 command.Parameters.AddWithValue("@NOME", clienteObj.NOME);
                 command.Parameters.AddWithValue("@IDADE", clienteObj.IDADE);
                 command.Parameters.AddWithValue("@ENDERECO", clienteObj.ENDERECO);
@@ -34,7 +34,7 @@ namespace CRUD_CLIENTES.Repositorio
                 command.Parameters.AddWithValue("@EMAIL", clienteObj.EMAIL);
                 command.Parameters.AddWithValue("@CIDADE", clienteObj.CIDADE);
                 command.Parameters.AddWithValue("@UF", clienteObj.UF);
-                _con.Open();
+                _con.Open(); //abro a conexão
                 i = command.ExecuteNonQuery(); // se foi com sucesso, ele retorna quantas linhas foram afetadas 
             }
             _con.Close();

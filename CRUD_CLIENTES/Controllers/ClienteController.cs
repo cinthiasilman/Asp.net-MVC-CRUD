@@ -76,7 +76,7 @@ namespace CRUD_CLIENTES.Controllers
                 _repositorio = new ClienteRepositorio();
                 if(_repositorio.ExcluirCliente(id))
                 {
-                    ViewBag.Mensagem = "Cliente excluído com sucesso!";
+                    //ViewBag.Mensagem = "Cliente excluído com sucesso!";
                 }
                 return RedirectToAction("ObterCliente");
             }
