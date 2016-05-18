@@ -1,0 +1,39 @@
+﻿@model CRUD_CLIENTES.Models.USUARIO
+@{
+    ViewBag.Title = "Login";
+}
+<h2>Login</h2>
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    //cria a tag do formulário
+    @Html.AntiForgeryToken() // previne o ataque CSRF
+                            @Html.ValidationSummary(true)
+    if (@ViewBag.Message != null)
+    {
+        <div style="border:1px solid red">
+            @ViewBag.Message
+        </div>
+    }
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a => a.usuario1)</td>
+            <td>@Html.TextBoxFor(a => a.usuario1)</td>
+            <td>@Html.ValidationMessageFor(a => a.usuario1)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(a => a.senha)</td>
+            <td> @Html.PasswordFor(a => a.senha) </td>
+            <td> @Html.ValidationMessageFor(a => a.senha) </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+            <td></td>
+        </tr>
+    </table>
+}
+
+<script src="~/scripts/jquery.validate.js"></script>
+
